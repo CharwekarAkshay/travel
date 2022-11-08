@@ -10,13 +10,16 @@ interface NavigationLinkProps {
 const NavigationLink: React.FC<NavigationLinkProps> = (props) => {
   const { navigation } = props;
   const router = useRouter();
-  console.log(router.pathname);
-  console.log(navigation.link);
-  console.log(router.pathname === navigation.link);
   
   return (
     <Link href={navigation.link}>
-      <span className={router.pathname === navigation.link ? "text-sky-600 hover:text-sky-500 font-medium" : "hover:text-sky-500 font-medium"}>
+      <span
+        className={
+          router.pathname === navigation.link
+            ? "text-agoda-blue font-medium"
+            : "hover:text-agoda-blue font-medium"
+        }
+      >
         {navigation.linkName}
       </span>
     </Link>
