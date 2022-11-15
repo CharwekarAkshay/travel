@@ -4,26 +4,27 @@ interface RoundedButtonProps {
   text: string;
   type?: "solid" | "transparent" | "bordered";
   color?: string;
+  onClick: () => void
 }
 
 const RoundedButton: React.FC<RoundedButtonProps> = (props) => {
-  const { text, type, color } = props;
+  const { text, type, color, onClick } = props;
 
-  let classes = `text-${color} hover:bg-${color}-light hover:text-white px-4 py-2 rounded-full`;
+  let classes = `px-4 py-2 cursor-pointer rounded-full `;
 
   switch (type) {
     case "transparent":
-      classes = `text-${color} hover:bg-${color}-light hover:text-white px-4 py-2 rounded-full`;
+      classes += `text-${color} hover:bg-${color}-light hover:text-white`;
       break;
     case "solid":
-      classes = `bg-${color} hover:bg-${color}-light text-white px-4 py-2 rounded-full`;
+      classes += `bg-${color} hover:bg-${color}-light text-white`;
       break;
     case "bordered":
-      classes = `border-${color}-light border text-${color} hover:bg-${color}-light hover:text-white px-4 py-2 rounded-full`;
+      classes += `border-${color}-light border text-${color} hover:bg-${color}-light hover:text-white`;
       break;
   }
-
-  return <div className={classes}>{text}</div>;
+  
+  return <div className={classes} onClick={onClick}>{text}</div>;
 };
 
 RoundedButton.defaultProps = {

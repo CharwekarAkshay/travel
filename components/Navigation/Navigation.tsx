@@ -2,9 +2,14 @@ import Image from "next/image";
 import React from "react";
 import { NavigationModel } from "../../models/NavigationModel";
 import NavigationLink from "../NavigationLink/NavigationLink";
-
+import dynamic from "next/dynamic";
 import agodaImage from "../../public/assets/agoda_logo.svg";
-import RoundedButton from "../RoundedButton/RoundedButton";
+
+const RoundedButton = dynamic(() => import("../RoundedButton/RoundedButton"), {
+  ssr: false,
+});
+
+import { useRouter } from "next/router";
 
 const navigationItems: NavigationModel[] = [
   {
@@ -19,6 +24,15 @@ const navigationItems: NavigationModel[] = [
 ];
 
 const Navigation = () => {
+  const router = useRouter();
+  const handleSignInButtonClick = () => {
+    router.push("/onboarding");
+  };
+
+  const handleListYourPlaceClick = () => {
+    router.push("/list-your-property");
+  };
+
   return (
     <nav className="bg-white py-3 px-8 flex items-center place-content-between">
       <div className="flex gap-9 items-center">
@@ -28,9 +42,13 @@ const Navigation = () => {
         ))}
       </div>
       <div className="flex gap-4 items-center">
-        <RoundedButton text="List your place" type={"bordered"} color ="agoda-fuchsia" />
-        <RoundedButton text="Sign In" />
-        <RoundedButton text="Create Account" />
+        <RoundedButton
+          text="List your place"
+          type={"bordered"}
+          color="agoda-fuchsia"
+          onClick={handleListYourPlaceClick}
+        />
+        <RoundedButton text="Sign In" onClick={handleSignInButtonClick} />
       </div>
     </nav>
   );

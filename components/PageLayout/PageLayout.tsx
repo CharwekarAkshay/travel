@@ -8,10 +8,10 @@ interface PageLayoutProps {
 const PageLayout: React.FC<PageLayoutProps> = (props) => {
   const { children } = props;
   return (
-    <>
+    <div className="min-h-screen max-h-screen flex flex-col">
       <Navigation />
-      {children}
-    </>
+      <div className="grow bg-agoda-background">{children}</div>
+    </div>
   );
 };
 

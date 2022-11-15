@@ -15,9 +15,12 @@ module.exports = {
         "agoda-fuchsia": {
           light: "#F76385",
           DEFAULT: "#FF567D",
-        }
+        },
+        "agoda-background": "#f9f9f9",
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
