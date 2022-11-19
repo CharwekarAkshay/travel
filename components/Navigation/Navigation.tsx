@@ -45,7 +45,6 @@ const Navigation = () => {
         <RoundedButton
           text="List your place"
           type={"bordered"}
-          color="agoda-fuchsia"
           onClick={handleListYourPlaceClick}
         />
         <RoundedButton text="Sign In" onClick={handleSignInButtonClick} />
